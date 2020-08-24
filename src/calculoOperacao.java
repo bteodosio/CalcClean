@@ -1,6 +1,6 @@
 public class calculoOperacao {
-    public Double primeiroOperador;
-    public Double segundoOperador;
+    private Double primeiroOperador;
+    private Double segundoOperador;
     private String identificadorOperacao;
     private String operacoesValidas = "+,-,/,*";
 
@@ -8,7 +8,23 @@ public class calculoOperacao {
         return operacoesValidas;
     }
 
-    public Boolean configurarOperador(String operador){
+    public Boolean configurarOperador(Double operador, Integer numOperador){
+        Boolean valorConfigurado = false;
+
+        if(operador != null){
+            if(numOperador == 1){
+                valorConfigurado = true;
+                primeiroOperador = operador;
+            }else if(numOperador == 2){
+                valorConfigurado = true;
+                segundoOperador = operador;
+            }
+        }
+
+        return valorConfigurado;
+    }
+
+    public Boolean configurarOperacao(String operador){
         Boolean valorConfigurado = false;
 
         if(operador.equals("+") || operador.equals("*") || operador.equals("/") || operador.equals("-")){
