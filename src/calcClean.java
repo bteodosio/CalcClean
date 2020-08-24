@@ -30,8 +30,9 @@ public class calcClean {
         receberPrimeiroOperador();
         receberOperacao();
         receberSegundoOperador();
-        System.out.println("Resultado " + operacao.calcularOperacao() + "\n");
-
+        operacao.calcularOperacao();
+        operacao.listarLogOperacao();
+        System.out.println("Resultado " + operacao.listarResultado() + "\n");
     }
 
 }

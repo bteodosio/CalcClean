@@ -1,8 +1,10 @@
 public class calculoOperacao {
     private Double primeiroOperador;
     private Double segundoOperador;
+    private Double resultadoCalculo = 0.0;
     private String identificadorOperacao;
     private String operacoesValidas = "+,-,/,*";
+    private String logOperacao = "";
 
     public String listarOperacoes(){
         return operacoesValidas;
@@ -35,34 +37,38 @@ public class calculoOperacao {
         return valorConfigurado;
     }
 
-    public Double calcularOperacao(){
-        Double resultadoOperacao = 0.0;
+    public String listarLogOperacao() {
+        return logOperacao;
+    }
+    
+    public Double listarResultado() {
+        return resultadoCalculo;
+    }
 
+    public void calcularOperacao(){
         switch (identificadorOperacao) {
             case "/":
-                System.out.println("Dividindo " + primeiroOperador + " por " + segundoOperador + "\n");
-                resultadoOperacao = primeiroOperador / segundoOperador;
+                logOperacao = "Dividindo " + primeiroOperador + " por " + segundoOperador + "\n";
+                resultadoCalculo = primeiroOperador / segundoOperador;
                 break;
             
             case "*":
-                System.out.println("Multiplicando " + primeiroOperador + " por " + segundoOperador + "\n");
-                resultadoOperacao = primeiroOperador * segundoOperador;
+                logOperacao = "Multiplicando " + primeiroOperador + " por " + segundoOperador + "\n";
+                resultadoCalculo = primeiroOperador * segundoOperador;
                 break;
 
             case "-":
-                System.out.println("Subritraindo " + segundoOperador + " de " + primeiroOperador + "\n");
-                resultadoOperacao = primeiroOperador - segundoOperador;
+                logOperacao = "Subritraindo " + segundoOperador + " de " + primeiroOperador + "\n";
+                resultadoCalculo = primeiroOperador - segundoOperador;
                 break;
             
             case "+":
-                System.out.println("Somando " + segundoOperador + " a " + primeiroOperador + "\n");
-                resultadoOperacao = primeiroOperador + segundoOperador;
+                logOperacao = "Somando " + segundoOperador + " a " + primeiroOperador + "\n";
+                resultadoCalculo = primeiroOperador + segundoOperador;
                     break;
 
             default:
                 break;
         }
-
-        return resultadoOperacao;
     }
 }
