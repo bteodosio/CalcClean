@@ -1,9 +1,9 @@
 import java.io.*;
 
 public class calcClean {
-    static BufferedReader entradaConsole = new BufferedReader(new InputStreamReader(System.in));
+    private static BufferedReader entradaConsole = new BufferedReader(new InputStreamReader(System.in));
 
-    public static Double recebeDouble (){
+    private static Double recebeDouble (){
 
         Double valorDouble = 0.0;
         try{
@@ -17,7 +17,7 @@ public class calcClean {
         return valorDouble;
     }
 
-    public static Double recebeOperador(Integer numOp){
+    private static Double recebeOperador(Integer numOp){
         Boolean valorIncorreto = true;
         Double operador = 0.0;
 
@@ -38,74 +38,27 @@ public class calcClean {
         return operador;
     }
 
-    public static String recebeOperacao(){
+    private static String recebeOperacao(String operacoesValidas){
         String identificadorOperacao = "";
-        Boolean valorIncorreto = true;
-
-        valorIncorreto = true;
-        while(valorIncorreto){                
-            System.out.println("Digite a identificadorOperacao [+,-,/,*]\n");
-            try{
-                identificadorOperacao = entradaConsole.readLine();
-            }catch(IOException err){
-                System.out.println("Operacao Invalida!");
-            }
-
-            if(!identificadorOperacao.equals("+") && !identificadorOperacao.equals("*") && !identificadorOperacao.equals("/") && !identificadorOperacao.equals("-")){
-                System.out.println("Operacao Invalida!");
-            }else{
-                valorIncorreto = false;
-            }
-            
+           
+        System.out.println("Digite a Operacao: ["+ operacoesValidas +"]\n");
+        try{
+            identificadorOperacao = entradaConsole.readLine();
+        }catch(IOException err){
+            System.out.println("Operacao Invalida!");
         }
 
         return identificadorOperacao;
     }
 
-    public static Double calculaOperacao(Double fator1, Double fator2, String Operacao){
-        Double resultadoOperacao = 0.0;
-
-        switch (Operacao) {
-            case "/":
-                System.out.println("Dividindo " + fator1 + " por " + fator2 + "\n");
-                resultadoOperacao = fator1 / fator2;
-                break;
-            
-            case "*":
-                System.out.println("Multiplicando " + fator1 + " por " + fator2 + "\n");
-                resultadoOperacao = fator1 * fator2;
-                break;
-
-            case "-":
-                System.out.println("Subritraindo " + fator2 + " de " + fator1 + "\n");
-                resultadoOperacao = fator1 - fator2;
-                break;
-            
-            case "+":
-                System.out.println("Somando " + fator2 + " a " + fator1 + "\n");
-                resultadoOperacao = fator1 + fator2;
-                    break;
-
-            default:
-                break;
-        }
-
-        return resultadoOperacao;
-    }
-
     public static void main(String[] args){
-                  
-        Double fatorOperacao1 = 0.0;
-        Double fatorOperacao2 = 0.0;
-        Double resultadoOperacao = 0.0;
-        String identificadorOperacao = "";
+        calculoOperacao operacao = new calculoOperacao();
 
-        fatorOperacao1 = recebeOperador(1);
-        identificadorOperacao = recebeOperacao();
-        fatorOperacao2 = recebeOperador(2);
-        resultadoOperacao = calculaOperacao(fatorOperacao1, fatorOperacao2, identificadorOperacao);
-        System.out.println("Resultado " + resultadoOperacao + "\n");
-        
+        operacao.primeiroOperador = recebeOperador(1);
+        while(!operacao.configurarOperador(recebeOperacao(operacao.listarOperacoes()))){}
+        operacao.segundoOperador = recebeOperador(2);
+        System.out.println("Resultado " + operacao.calcularOperacao() + "\n");
+
     }
 
 }
