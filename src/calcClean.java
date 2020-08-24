@@ -27,6 +27,7 @@ public class calcClean {
     }
 
     public static void main(String[] args){
+        operacao.cadastrarOperacoesBasicas();
         receberPrimeiroOperador();
         receberOperacao();
         receberSegundoOperador();
