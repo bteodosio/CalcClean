@@ -1,6 +1,6 @@
-public class calcClean {
-    private static calculoOperacao operacao = new calculoOperacao();
-    private static interfaceCalc console = new interfaceCalc();
+public class CalcClean {
+    private static CalculoOperacao operacao = new CalculoOperacao();
+    private static InterfaceCalc console = new InterfaceCalc();
 
     private static void receberPrimeiroOperador(){
         System.out.println("Digite o primeiro numero:\n");
@@ -27,9 +27,9 @@ public class calcClean {
     }
 
     private static void adicionarOperacoesEspeciais(){
-        operacoes opEspecial;
+        Operacoes opEspecial;
 
-        opEspecial = new operacoes(){
+        opEspecial = new Operacoes(){
             public Double calcular(Double fator1, Double fator2){
                 return Math.pow(fator1, fator2);
             }
@@ -40,7 +40,7 @@ public class calcClean {
         opEspecial.configurarLogOperacao("Elevando o numero:");
         operacao.cadastrarOperacao(opEspecial);
 
-        opEspecial = new operacoes(){
+        opEspecial = new Operacoes(){
             public Double calcular(Double fator1, Double fator2){
                 return Math.sqrt(fator1);
             }

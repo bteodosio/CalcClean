@@ -1,20 +1,20 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class calculoOperacao {
+public class CalculoOperacao {
     private Double primeiroOperador;
     private Double segundoOperador;
     private Double resultadoCalculo = 0.0;
-    private operacoes identificadorOperacao;
+    private Operacoes identificadorOperacao;
     private String operacoesValidas = "";
-    private List<operacoes> opCadastrada = new ArrayList<operacoes>();
+    private List<Operacoes> opCadastrada = new ArrayList<Operacoes>();
 
-    public void cadastrarOperacao(operacoes novaOp){
+    public void cadastrarOperacao(Operacoes novaOp){
         opCadastrada.add(novaOp);
     }
 
     public void cadastrarOperacoesBasicas(){
-        operacoes opSoma = new operacoes(){
+        Operacoes opSoma = new Operacoes(){
             public Double calcular(Double fator1, Double fator2){
                 return fator1 + fator2;
             }
@@ -23,7 +23,7 @@ public class calculoOperacao {
         opSoma.configurarSinalOperacao("+");
         this.cadastrarOperacao(opSoma);
 
-        operacoes opSub = new operacoes(){
+        Operacoes opSub = new Operacoes(){
             public Double calcular(Double fator1, Double fator2){
                 return fator1 - fator2;
             }
@@ -32,7 +32,7 @@ public class calculoOperacao {
         opSub.configurarSinalOperacao("-");
         this.cadastrarOperacao(opSub);
 
-        operacoes opDiv = new operacoes(){
+        Operacoes opDiv = new Operacoes(){
             public Double calcular(Double fator1, Double fator2){
                 return fator1 / fator2;
             }
@@ -41,7 +41,7 @@ public class calculoOperacao {
         opDiv.configurarSinalOperacao("/");
         this.cadastrarOperacao(opDiv);
 
-        operacoes opMult = new operacoes(){
+        Operacoes opMult = new Operacoes(){
             public Double calcular(Double fator1, Double fator2){
                 return fator1 * fator2;
             }
@@ -53,7 +53,7 @@ public class calculoOperacao {
 
     public String listarOperacoes(){
         operacoesValidas = "";
-        for(operacoes op : opCadastrada){
+        for(Operacoes op : opCadastrada){
             operacoesValidas += op.listarSinalOperacao()+",";
         }
         operacoesValidas = operacoesValidas.substring(0, operacoesValidas.length()-1);
@@ -79,7 +79,7 @@ public class calculoOperacao {
     public Boolean configurarOperacao(String operador){
         Boolean valorConfigurado = false;
 
-        for(operacoes op : opCadastrada){
+        for(Operacoes op : opCadastrada){
             if(operador.equals(op.listarSinalOperacao())){
                 valorConfigurado = true;
                 identificadorOperacao = op;

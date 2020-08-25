@@ -1,4 +1,4 @@
-public class operacoes {
+public class Operacoes {
     private String nomeOperacao;
     private String sinalOperacao;
     private String logOperacao;
