@@ -26,8 +26,36 @@ public class calcClean {
         }
     }
 
+    private static void adicionarOperacoesEspeciais(){
+        operacoes opEspecial;
+
+        opEspecial = new operacoes(){
+            public Double calcular(Double fator1, Double fator2){
+                return Math.pow(fator1, fator2);
+            }
+        };
+
+        opEspecial.configurarNome("Potencia");
+        opEspecial.configurarSinalOperacao("^");
+        opEspecial.configurarLogOperacao("Elevando o numero:");
+        operacao.cadastrarOperacao(opEspecial);
+
+        opEspecial = new operacoes(){
+            public Double calcular(Double fator1, Double fator2){
+                return Math.sqrt(fator1);
+            }
+        };
+
+        opEspecial.configurarNome("Raiz");
+        opEspecial.configurarSinalOperacao("sqrt");
+        opEspecial.configurarLogOperacao("Raiz Quadrado do numero:");
+        operacao.cadastrarOperacao(opEspecial);
+
+    }
+
     public static void main(String[] args){
         operacao.cadastrarOperacoesBasicas();
+        adicionarOperacoesEspeciais();
         receberPrimeiroOperador();
         receberOperacao();
         receberSegundoOperador();
