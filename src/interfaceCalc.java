@@ -9,7 +9,7 @@ public class interfaceCalc {
 
         Double valorDouble = 0.0;
         try{
-            valorDouble = Double.parseDouble(entradaConsole.readLine());
+            valorDouble = Double.parseDouble(entradaConsole.readLine().replace(',', '.'));
         } catch (NumberFormatException err){
             return null;
         } catch (IOException err){
